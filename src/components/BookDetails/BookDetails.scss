@@ -1,0 +1,17 @@
+.BookDetails {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 40px;
+    >p {
+        max-width: 600px;
+        @media(max-width: 680px) {
+            max-width: 400px;
+        }
+        @media(max-width: 420px) {
+            max-width: 320px;
+        }
+    }
+}
