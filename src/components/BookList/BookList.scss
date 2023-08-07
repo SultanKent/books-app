@@ -1,4 +1,4 @@
-.book-list {
+.book-list, .Favorites {
   .Loading {
     text-align: center;
   }
@@ -25,11 +25,14 @@
         transition: transform 0.3s ease-in-out;
         &:hover {
           background: #808080;
-          transform: scale(1.1);
         }
         img {
           max-width: 600px;
           height: 450px;
+          transition: transform 0.3s ease-in-out;
+          &:hover {
+            transform: scale(0.9);
+          }
           @media(max-width: 680px) {
             height: 400px;
           }

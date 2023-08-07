@@ -1,0 +1,14 @@
+.Header_main {
+    height: 600px;
+    text-align: center;
+    padding: 200px 0px;
+    >p {
+        margin-bottom: 20px;
+    }
+    >input {
+        outline: none;
+        height: 30px;
+        width: 200px;
+        text-align: center;
+    }
+}
