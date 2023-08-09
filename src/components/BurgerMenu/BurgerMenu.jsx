@@ -14,7 +14,7 @@ const BurgerMenu = ({ isOpen, toggleMenu }) => {
         <li><Link to="/" >Home</Link></li>
         <li><Link to="/favorites" >Favorites</Link></li>
         <li><Link to="/genre" >Genre</Link></li>
-        <li><Link to="/contact" >Contact</Link></li>
+        <li><Link to="/contacts" >Contacts</Link></li>
       </ul>
     </div>
   );

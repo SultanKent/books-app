@@ -54,12 +54,10 @@
     .error-message {
       color: red;
     }
-    // ... (предыдущий код)
-
 .button-container {
   display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 .load-button {
@@ -71,7 +69,6 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
-
   &:hover {
     background-color: #0056b3;
   }

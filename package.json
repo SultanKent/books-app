@@ -17,6 +17,7 @@
     "react-router-dom": "^6.14.2",
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
+    "reselect": "^4.1.8",
     "sass": "^1.64.2",
     "typeface-dm-sans": "^1.1.13"
   },

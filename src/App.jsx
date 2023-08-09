@@ -7,6 +7,8 @@ import BookDetails from './components/BookDetails/BookDetails';
 import Header from './components/Header/Header';
 import './App.scss'
 import Favorites from './components/Favorites/Favorites';
+import Footer from './components/Footer/Footer'
+import Contacts from './components/Contacts/Contacts';
 
 function App() {
   const [searchText, setSearchText] = useState('');
@@ -14,7 +16,6 @@ function App() {
   const handleSearch = (text) => {
     setSearchText(text);
   };
-
   return (
     <Provider store={store}>
       <Router>
@@ -24,7 +25,9 @@ function App() {
             <Route path="/" element={<BookList searchText={searchText} />} />
             <Route path="/books/:id" element={<BookDetails />} />
             <Route path='/favorites' element={<Favorites/>} />
+            <Route path='/contacts' element={<Contacts/> } />
           </Routes>
+          <Footer/>
         </div>
       </Router>
     </Provider>

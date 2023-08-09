@@ -6,31 +6,24 @@ import './BookList.scss';
 
 const BookList = ({ searchText }) => {
   const dispatch = useDispatch();
+  const [bookToShow, setBookToShow] = useState(10);
   const booksData = useSelector((state) => state.books);
   const { loading, books, error } = booksData;
-
-  const limit = 10;
-  const [startIndex, setStartIndex] = useState(0);
+  useEffect(() => {
+    dispatch(fetchBooks(filteredBooks));
+  }, [dispatch, searchText]);
 
   useEffect(() => {
-    dispatch(fetchBooks(startIndex, limit)); // Запрос всех книг без учета текста поиска
-  }, [dispatch, startIndex]);
+    setBookToShow(10);
+  }, [booksData]);
 
   const handleLoadMore = () => {
-    setStartIndex(startIndex + limit);
+    setBookToShow((prevValue) => prevValue + 10);
   };
 
-  const handleLoadLess = () => {
-    if (startIndex - limit >= 0) {
-      setStartIndex(startIndex - limit);
-    }
-  };
-
-  // Фильтрация книг на основе текста поиска
   const filteredBooks = books.filter((book) =>
     book.title.toLowerCase().includes(searchText.toLowerCase())
   );
-
   return (
     <div className="book-list">
       {loading ? (
@@ -40,7 +33,7 @@ const BookList = ({ searchText }) => {
       ) : (
         <div>
           <ul>
-            {filteredBooks.map((book) => (
+            {filteredBooks.slice(0, bookToShow).map((book) => (
               <li key={book.id}>
                 <Link to={`/books/${book.id}`} style={{ textDecoration: 'none' }}>
                   <img src={book.image_url} alt="" />
@@ -51,9 +44,6 @@ const BookList = ({ searchText }) => {
             ))}
           </ul>
           <div className="button-container">
-            <button className="load-button" onClick={handleLoadLess}>
-               Less
-            </button>
             <button className="load-button" onClick={handleLoadMore}>
                More
             </button>
@@ -64,4 +54,4 @@ const BookList = ({ searchText }) => {
   );
 };
 
-export default BookList;
+export default BookList

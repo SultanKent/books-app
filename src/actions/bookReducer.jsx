@@ -1,5 +1,4 @@
 import {
-  FETCH_BOOKS_REQUEST,
   FETCH_BOOKS_SUCCESS,
   FETCH_BOOKS_FAILURE,
   TOGGLE_FAVORITE,
@@ -13,11 +12,6 @@ const initialState = {
 
 const bookReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_BOOKS_REQUEST:
-      return {
-        ...state,
-        loading: true,
-      };
     case FETCH_BOOKS_SUCCESS:
       return {
         loading: false,
@@ -36,8 +30,6 @@ const bookReducer = (state = initialState, action) => {
           ? { ...book, isFavorite: !book.isFavorite }
           : book
       );
-
-      // Update local storage with the new favorite status
       const newLocalStorage = updatedBooks.reduce((acc, book) => {
         acc[book.id] = book.isFavorite;
         return acc;
@@ -54,4 +46,4 @@ const bookReducer = (state = initialState, action) => {
   }
 };
 
-export default bookReducer;
+export default bookReducer

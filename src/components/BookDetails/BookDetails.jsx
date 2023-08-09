@@ -24,8 +24,6 @@ const BookDetails = () => {
 
   const handleFavoriteToggle = () => {
     dispatch(toggleFavorite(parseInt(id)));
-  
-    // Update local storage with the new favorite status
     const storedBooks = JSON.parse(localStorage.getItem('favoriteBooks')) || {};
     localStorage.setItem(
       'favoriteBooks',
@@ -56,4 +54,4 @@ const BookDetails = () => {
   );
 };
 
-export default BookDetails;
+export default BookDetails

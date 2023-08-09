@@ -1,0 +1,23 @@
+.Contacts {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    .Contacts_main {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        >a:nth-child(1) {
+        >img {
+            width: 70px;
+            height: 70px;
+        } 
+        } 
+        >a:nth-child(2) {
+        >img {
+            width: 50px;
+            height: 50px;
+        }
+        }
+    }
+}

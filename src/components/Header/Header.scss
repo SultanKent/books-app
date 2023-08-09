@@ -1,7 +1,10 @@
 .Header_main {
-    height: 600px;
+    height: 700px;
     text-align: center;
     padding: 200px 0px;
+    @media(max-width: 680px) {
+        height: 600px;
+    }
     >p {
         margin-bottom: 20px;
     }
