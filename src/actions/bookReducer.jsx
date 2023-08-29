@@ -25,22 +25,16 @@ const bookReducer = (state = initialState, action) => {
         error: action.payload,
       };
       case TOGGLE_FAVORITE:
-      const updatedBooks = state.books.map((book) =>
-        book.id === action.payload
-          ? { ...book, isFavorite: !book.isFavorite }
-          : book
-      );
-      const newLocalStorage = updatedBooks.reduce((acc, book) => {
-        acc[book.id] = book.isFavorite;
-        return acc;
-      }, {});
+  const updatedBooks = state.books.map((book) =>
+    book.id === action.payload.id
+      ? { ...book, isFavorite: !book.isFavorite }
+      : book
+  );
 
-      localStorage.setItem('favoriteBooks', JSON.stringify(newLocalStorage));
-
-      return {
-        ...state,
-        books: updatedBooks,
-      };
+  return {
+    ...state,
+    books: updatedBooks,
+  };
     default:
       return state;
   }
