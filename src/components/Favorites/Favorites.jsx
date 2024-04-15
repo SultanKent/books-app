@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 import '../BookList/BookList.scss'
 
 const Favorites = () => {
+  const storedBooks = JSON.parse(localStorage.getItem('favoriteBooks')) || {};
   const favoriteBooks = useSelector((state) =>
-  state.books.books.filter((book) => book.isFavorite)
-  )
+    state.books.books.filter((book) => storedBooks[book.id])
+  );
 
   return (
     <div className='Favorites'>

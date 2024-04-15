@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react'; 
-import {store, persistor} from './store';
+import store from './store';
 import BookList from './components/BookList/BookList';
 import BookDetails from './components/BookDetails/BookDetails';
 import Header from './components/Header/Header';
@@ -19,7 +18,6 @@ function App() {
   };
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
       <Router>
         <div className="App">
           <Header handleSearch={handleSearch} />
@@ -32,7 +30,6 @@ function App() {
           <Footer/>
         </div>
       </Router>
-      </PersistGate>
     </Provider>
   );
 }

@@ -4,10 +4,18 @@ export const TOGGLE_FAVORITE = 'TOGGLE_FAVORITE';
 export const FETCH_BOOKS_SUCCESS = 'FETCH_BOOKS_SUCCESS';
 export const FETCH_BOOKS_FAILURE = 'FETCH_BOOKS_FAILURE';
 
-  export const fetchBooksSuccess = (books) => ({
-  type: FETCH_BOOKS_SUCCESS,
-  payload: books,
-  });
+export const fetchBooksSuccess = (books) => {
+  const storedBooks = JSON.parse(localStorage.getItem('favoriteBooks')) || {};
+  const booksWithFavorites = books.map((book) => ({
+    ...book,
+    isFavorite: storedBooks[book.id] || false,
+  }));
+
+  return {
+    type: FETCH_BOOKS_SUCCESS,
+    payload: booksWithFavorites,
+  };
+};
 
 export const fetchBooksFailure = (error) => ({
   type: FETCH_BOOKS_FAILURE,

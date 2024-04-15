@@ -8,6 +8,7 @@ const BookDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const [book, setBook] = useState(null);
+
   useEffect(() => {
     fetch(`https://example-data.draftbit.com/books/${id}`)
       .then((response) => response.json())
@@ -20,9 +21,14 @@ const BookDetails = () => {
 
   const selectedBook = books.find((b) => b.id === parseInt(id));
   const isFavorite = selectedBook ? selectedBook.isFavorite : false;
+
   const handleFavoriteToggle = () => {
-    const updatedBook = { ...selectedBook, isFavorite: !isFavorite };
-    dispatch(toggleFavorite(updatedBook));
+    dispatch(toggleFavorite(parseInt(id)));
+    const storedBooks = JSON.parse(localStorage.getItem('favoriteBooks')) || {};
+    localStorage.setItem(
+      'favoriteBooks',
+      JSON.stringify({ ...storedBooks, [id]: !isFavorite })
+    );
   };
 
   if (!book) {
@@ -48,4 +54,4 @@ const BookDetails = () => {
   );
 };
 
-export default BookDetails;
+export default BookDetails
